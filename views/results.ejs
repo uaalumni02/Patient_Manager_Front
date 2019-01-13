@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="home.css">
+    <title>Patient Manager</title>
+</head>
+<body>
+    <div class="container">
+                <div class="jumbotron">
+                  <h1>Patient Manager</h1> 
+                  <h3>Virtual Portal</h3>     
+                </div>    
+              </div>
+    <table style="width:100%"> 
+    <tr>
+        <th>Patient Name:</th>
+        <th>Patient Email:</th>
+        <th>Patient Phone:</th>
+        <th>Patient Address:</th>
+        <th>Patient Medication:</th>
+        <th>Patient Diagnosis:</th>
+        <th>Patient Additional_Info:</th>
+    </tr>
+    <tr>
+        <td>&nbsp <%= response.name %></td>
+        <td>&nbsp <%= response.email %></td>
+        <td>&nbsp <%= response.phone %></td>
+        <td>&nbsp <%= response.address %></td>
+        <td>&nbsp <%= response.medication %></td>
+        <td>&nbsp <%= response.diagnosis %></td>
+        <td>&nbsp <%= response.additionalInfo %></td>
+    </tr>
+    </table>      
+
+</body>
+</html>
