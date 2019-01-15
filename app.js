@@ -30,7 +30,7 @@ app.post('/login', (req, res) => {
     axios({
         method: 'post',
         url: 'http://localhost:3000/api/user/login',
-        data: userInfo
+        data: userInfo,
     })
     .then((response) => {
         console.log(response);
