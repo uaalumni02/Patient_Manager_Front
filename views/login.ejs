@@ -39,13 +39,10 @@
                 })
             })
                 .then(res => res.json())
-                .then(response => console.log('Success:', JSON.stringify(response)))
+                .then(response => localStorage.setItem('token', JSON.stringify(response)))
                 .catch(error => console.error('Error:', error));
         })
     });
-
-
-        // Save the token to the storage
 
         // Redirect to the dashboard
 
