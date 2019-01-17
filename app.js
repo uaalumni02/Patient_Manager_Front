@@ -43,23 +43,5 @@ app.post('/login', (req, res) => {
     
 
 
-// app.post('/search', (req, res) => {
-//     let id = req.body.id
-//     // console.log(id)
-//     const requestUrl = 'http://localhost:3000/api/patient/' + id
-//     let tokenStr = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlRvbSIsInVzZXJJZCI6IjViNTY4NjhmZWI5MTEzMjgyNGZjNDhlOSIsImlhdCI6MTU0NjY0NTYzNywiZXhwIjoxNTc4MTgxNjM3fQ.93TFILTA_2Cy4d_Wt4bAeAFZ45ClVZ9mAfc6CAUCYXs';
-//     return axios.get(requestUrl, { headers: { "Authorization": `Bearer ${tokenStr}` } })
-//         .then((response) => {
-//             var responseData = response.data;
-//             return res.status(200)
-//                 .render('results', { response: responseData });
-//         })
-//         .catch((err) => {
-//             res.send(err.message);
-//         });
-// });
-
-
-
 app.listen(port, () => console.log('server is running'));
 
