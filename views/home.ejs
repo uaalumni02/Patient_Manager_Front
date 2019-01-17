@@ -1,28 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-   
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
     <link rel="stylesheet" href="home.css">
     <title>Patient Manager</title>
 </head>
+
 <body>
-        <div class="container">
-                <div class="jumbotron">
-                  <h1>Patient Manager</h1> 
-                  <h3>Virtual Portal</h3>     
-                </div>    
-              </div>
-    <form class="form-wrapper" action="", method="POST">
+    <div class="container">
+        <div class="jumbotron">
+            <h1>Patient Manager</h1>
+            <h3>Virtual Portal</h3>
+        </div>
+    </div>
+    <form id="searchForm" class="form-wrapper" action="" , method="POST">
         <h3> Search Patients By ID </h3>
         <input type="text" id="search" name="id" value="" placeholder="Search for..." required>
         <input type="submit" value="Submit" id="submit">
     </form>
-<!-- // get the token
-// make request to the server to fetch the userdata
-// append everything to the dom. -->
+
 </body>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const theForm = document.getElementById("searchForm");
+
+        theForm.addEventListener("submit", (event) => {
+            event.preventDefault();
+            let id = document.getElementById("search").value;
+            const token = localStorage.getItem('token');
+             const bearer = 'Bearer '+ token
+            fetch('http://localhost:3000/api/patient/' + id, {
+                method: "GET",
+                headers: {
+                    'Authorization': bearer,
+                }
+            })
+                .then(res => res.json())
+                .then(response => console.log('res from get', response))
+                .catch(error => console.error('Error:', error));
+        })
+
+    })
+
+
+</script>
+
 </html>
+
+<!-- make request to the server to fetch the userdata
+append everything to the dom.  -->
