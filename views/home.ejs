@@ -23,9 +23,8 @@
         <input type="text" id="search" name="id" value="" placeholder="Search for..." required>
         <input type="submit" value="Submit" id="submit">
     </form>
-    <div id="person"></div>
     <table id="table" style="width:100%">
-        <tr>
+        <!-- <tr>
             <th>Patient Name:</th>
             <th>Patient Email:</th>
             <th>Patient Phone:</th>
@@ -33,7 +32,7 @@
             <th>Patient Medication:</th>
             <th>Patient Diagnosis:</th>
             <th>Patient Additional_Info:</th>
-        </tr>
+        </tr> -->
         
     </table>
 
@@ -55,17 +54,16 @@
             })
                 .then(res => res.json())
                 .then(response => {
-                    
+                     
                     let html = '';
-                   
-                        html += `<td>${response.name} </td>`;
-                        html += `<td> ${response.email} </td>`;
-                        html += `<td> ${response.phone} </td>`;
-                        html += `<td> ${response.address} </td>`;
-                        html += `<td> ${response.medication} </td>`;
-                        html += `<td> ${response.diagnosis} </td>`;
-                        html += `<td> ${response.additionalInfo} </td>`;
-                       
+                    html += `<td>  Name: ${response.name} </td>`;
+                    html += `<td>  Email: ${response.email}  </td>`;
+                    html += `<td>  Phone: ${response.phone} </td>`;
+                    html += `<td>  Address: ${response.address} </td>`;
+                    html += `<td>  Medication: ${response.medication} </td>`;
+                    html += `<td>  Diagnosis: ${response.diagnosis}  </td>`;
+                    html += `<td>  AdditionalInfo: ${response.additionalInfo} </td>`;
+                        
                         const personContainer = document.getElementById("table");
 
                         personContainer.innerHTML = html;
