@@ -19,7 +19,7 @@ app.get('/search', (req, res) => {
 });
 
 app.get('/login', (req, res) => {
-    return res.render('login')
+    return res.render('newLogin')
 });
 
 app.post('/login', (req, res) => {

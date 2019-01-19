@@ -1,23 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Patient Manager</title>
+    <<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" media="screen" href="newLogin.css" />
 </head>
 
 <body>
-    <h1>Patient Manger</h1>
-    <h3> Please login</h3>
-    <form id="LoginForm" class="login" action="" method="POST">
-        username: <input type="text" id="username" name='username' value=""><br />
-        password: <input type="password" id="password" name='password' value=""><br />
-        <input type="submit" value="Submit">
-    </form>
-</body>
+    <div id="fullscreen_bg" class="fullscreen_bg" />
 
+    <div class="container">
+
+        <form id="LoginForm" action="" method="POST"class="form-signin">
+            <h1 class="form-signin-heading text-muted">Patient Manager</h1>
+            <input type="text" class="form-control" id="username" placeholder="Username" required="" autofocus="">
+            <input type="password" class="form-control" id="password" placeholder="Password" required="">
+            <button class="btn btn-lg btn-primary btn-block" type="submit">
+                Sign In
+            </button>
+        </form>
+
+    </div>
+
+</body>
 <script>
 
     //sending username and password to the server and saving toked in local storage; also redirected to another page
@@ -50,3 +56,4 @@
 </script>
 
 </html>
+
