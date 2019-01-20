@@ -26,6 +26,10 @@ app.get('/register', (req, res) => {
     return res.render('register')
 });
 
+app.get('/patients', (req, res) => {
+    return res.render('addPatients')
+});
+
 app.post('/login', (req, res) => {
     const userInfo = {
         username: req.body.username,
