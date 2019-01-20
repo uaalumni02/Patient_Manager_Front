@@ -12,31 +12,27 @@
 
     <div class="container">
 
-        <form id="LoginForm" action="" method="POST"class="form-signin">
+        <form id="RegisterForm" action="" method="POST" class="form-signin">
             <h1 class="form-signin-heading text-muted">Patient Manager</h1>
             <input type="text" class="form-control" id="username" placeholder="Username" required="" autofocus="">
             <input type="password" class="form-control" id="password" placeholder="Password" required="">
             <button class="btn btn-lg btn-primary btn-block" type="submit">
-                Sign In
+                Register
             </button>
-            <a href="http://localhost:8080/register">Click link to register</a>
         </form>
 
     </div>
 
 </body>
 <script>
-
-    //sending username and password to the server and saving toked in local storage; also redirected to another page
-
     document.addEventListener("DOMContentLoaded", () => {
-        const theForm = document.getElementById("LoginForm");
+        const theForm = document.getElementById("RegisterForm");
 
         theForm.addEventListener("submit", (event) => {
             let username = document.getElementById("username").value;
             let password = document.getElementById("password").value;
             event.preventDefault();
-            fetch('http://localhost:3000/api/user/login', {
+            fetch('http://localhost:3000/api/user/', {
                 method: "post",
                 headers: {
                     'Content-Type': 'application/json',
@@ -48,13 +44,10 @@
             })
                 .then(res => res.json())
                 .then(response => {
-                    localStorage.setItem('token', response.token);
-                    location.replace("http://localhost:8080/search")
+                    console.log('user added')
                 }).catch(error => console.error('Error:', error));
         })
     });
-
 </script>
 
 </html>
-

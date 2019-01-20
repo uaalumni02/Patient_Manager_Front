@@ -22,6 +22,10 @@ app.get('/login', (req, res) => {
     return res.render('newLogin')
 });
 
+app.get('/register', (req, res) => {
+    return res.render('register')
+});
+
 app.post('/login', (req, res) => {
     const userInfo = {
         username: req.body.username,
