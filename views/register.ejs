@@ -44,6 +44,7 @@
             })
                 .then(res => res.json())
                 .then(response => {
+                    location.replace("http://localhost:8080/search")
                     console.log('user added')
                 }).catch(error => console.error('Error:', error));
         })
