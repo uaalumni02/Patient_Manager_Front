@@ -29,25 +29,6 @@ app.get('/register', (req, res) => {
 app.get('/patients', (req, res) => {
     return res.render('addPatients')
 });
-
-app.post('/login', (req, res) => {
-    const userInfo = {
-        username: req.body.username,
-        password: req.body.password
-    }
-    axios({
-        method: 'post',
-        url: 'http://localhost:3000/api/user/login',
-        data: userInfo,
-    })
-    .then((response) => {
-        console.log(response);
-    })
-    .catch((error) => {
-        console.log(error);
-    });
-
-});
     
 
 
