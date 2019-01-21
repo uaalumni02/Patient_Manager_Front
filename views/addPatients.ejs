@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<title>Patient Manager</title>
 	<meta charset="UTF-8">
@@ -9,53 +10,54 @@
 	<link rel="stylesheet" type="text/css" href="main.css">
 
 </head>
+
 <body>
 
 
 	<div class="container-contact100">
 		<div class="wrap-contact100">
-			<form class="contact100-form validate-form">
+			<form id="PatientForm" class="contact100-form validate-form" method="POST">
 				<span class="contact100-form-title">
-					 Patient Information
+					Patient Information
 				</span>
 
-				<div class="wrap-input100 validate-input bg1" data-validate="Please Type Your Name">
+				<div class="wrap-input100  bg1">
 					<span class="label-input100">FULL NAME *</span>
-					<input class="input100" type="text" name="name" placeholder="Enter Your Name">
+					<input class="input100" id="name" type="text" name="name" placeholder="Enter Your Name">
 				</div>
 
-				<div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Enter Your Email (e@a.x)">
+				<div class="wrap-input100  bg1 rs1-wrap-input100">
 					<span class="label-input100">Email *</span>
-					<input class="input100" type="text" name="email" placeholder="Enter Your Email ">
+					<input class="input100" type="text" name="email"  id="email" placeholder="Enter Your Email ">
+				</div>
+
+				<div  class="wrap-input100 bg1 rs1-wrap-input100">
+					<span class="label-input100">Phone *</span>
+					<input class="input100" id="phone" type="text" name="phone" placeholder="Enter Number Phone">
+				</div>
+
+				<div  class="wrap-input100  bg1">
+					<span class="label-input100">Address *</span>
+					<input class="input100" id="address" type="text" name="name" placeholder="Enter Your Address">
 				</div>
 
 				<div class="wrap-input100 bg1 rs1-wrap-input100">
-					<span class="label-input100">Phone *</span>
-					<input class="input100" type="text" name="phone" placeholder="Enter Number Phone">
-				</div>
-
-				<div class="wrap-input100 validate-input bg1" data-validate="Please Type Your Name">
-					<span class="label-input100">Address *</span>
-					<input class="input100" type="text" name="name" placeholder="Enter Your Address">
-				</div>
-
-				<div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Enter Your Email (e@a.x)">
 					<span class="label-input100">Medication *</span>
-					<input class="input100" type="text" name="email" placeholder="Enter Your Medication ">
+					<input class="input100" type="text" name="email" id="medication"  placeholder="Enter Your Medication ">
 				</div>
 
-				<div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Enter Your Email (e@a.x)">
+				<div class="wrap-input100 bg1 rs1-wrap-input100">
 					<span class="label-input100">Diagnosis *</span>
-					<input class="input100" type="text" name="email" placeholder="Enter Your Diagnosis">
+					<input class="input100" type="text" name="email" id="diagnosis" placeholder="Enter Your Diagnosis">
 				</div>
 
-				<div class="wrap-input100 validate-input bg0 rs1-alert-validate" data-validate = "Please Type Your Message">
+				<div class="wrap-input100 bg0 rs1-alert-validate">
 					<span class="label-input100">Additional Information</span>
-					<textarea class="input100" name="message" placeholder="Your message here..."></textarea>
+					<input class="input100" id="additional" name="message" placeholder="Your message here...">
 				</div>
 
 				<div class="container-contact100-form-btn">
-					<button class="contact100-form-btn">
+					<button class="contact100-form-btn" type="submit">
 						<span>
 							Submit
 							<i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
@@ -67,4 +69,49 @@
 	</div>
 
 </body>
+<script>
+
+	document.addEventListener("DOMContentLoaded", () => {
+		const theForm = document.getElementById("PatientForm");
+
+		theForm.addEventListener("submit", (event) => {
+			let name = document.getElementById("name").value;
+			event.preventDefault();
+
+			let email = document.getElementById("email").value;
+			let phone = document.getElementById("phone").value;
+			let address = document.getElementById("address").value;
+			let medication = document.getElementById("medication").value;
+			let diagnosis = document.getElementById("diagnosis").value;
+			let additionalInfo = document.getElementById("additional").value;
+			
+			const token = localStorage.getItem('token');
+            const bearer = 'Bearer ' + token
+
+			fetch('http://localhost:3000/api/patient', {
+				method: "post",
+				headers: {
+					'Authorization': bearer,
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({
+					name: name,
+					email: email,
+					phone: phone,
+					address: address,
+					medication: medication,
+					diagnosis: diagnosis,
+					additionalInfo: additionalInfo
+				})
+			})
+				.then(res => res.json())
+				.then(response => {
+					console.log(response)
+				}).catch(error => console.error('Error:', error));
+		})
+	});
+
+
+</script>
+
 </html>
