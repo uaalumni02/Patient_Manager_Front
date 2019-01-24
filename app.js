@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 app.use(express.static(__dirname + '/views'))
 
 app.get('/search', (req, res) => {
-    return res.render('home')
+    return res.render('search')
 });
 
 app.get('/login', (req, res) => {
@@ -28,6 +28,10 @@ app.get('/register', (req, res) => {
 
 app.get('/patients', (req, res) => {
     return res.render('addPatients')
+});
+
+app.get('/confirmation', (req, res) => {
+    return res.render('patientConfirm')
 });
     
 

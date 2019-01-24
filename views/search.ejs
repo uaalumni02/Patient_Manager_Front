@@ -2,30 +2,47 @@
 <html lang="en">
 
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-    <link rel="stylesheet" href="home.css">
     <title>Patient Manager</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="util.css">
+    <link rel="stylesheet" type="text/css" href="main.css">
+
 </head>
 
 <body>
-    <div class="container">
-        <div class="jumbotron">
-            <h1>Patient Manager</h1>
-            <h3>Virtual Portal</h3>
+
+
+    <div class="container-contact100">
+        <div class="wrap-contact100">
+            <form id="searchForm" class="contact100-form validate-form" action="" method="POST">
+                <span class="contact100-form-title">
+                    Patient Information
+                </span>
+
+                <div class="wrap-input100  bg1">
+                    <span class="label-input100">Search for Patients *</span>
+                    <input class="input100" id="search" type="text" name="name" placeholder="Enter Patient ID">
+                </div>
+
+                <div class="container-contact100-form-btn">
+                    <button class="contact100-form-btn" type="submit">
+                        <span>
+                            Submit
+                            <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
+                        </span>
+                    </button>
+                </div>
+            </form>
+
         </div>
+
+        <table id="table" style="width:100%">
+
+        </table>
     </div>
-    <form id="searchForm" class="form-wrapper" action="" , method="POST">
-        <h3> Search Patients By ID </h3>
-        <input type="text" id="search" name="id" value="" placeholder="Search for..." required>
-        <input type="submit" value="Submit" id="submit">
-    </form>
-    <table id="table" style="width:100%">
-        
-    </table>
+
 
 </body>
 <script>
@@ -45,7 +62,7 @@
             })
                 .then(res => res.json())
                 .then(response => {
-                     
+
                     let html = '';
                     html += `<td>  Name: ${response.name} </td>`;
                     html += `<td>  Email: ${response.email}  </td>`;
@@ -54,10 +71,10 @@
                     html += `<td>  Medication: ${response.medication} </td>`;
                     html += `<td>  Diagnosis: ${response.diagnosis}  </td>`;
                     html += `<td>  AdditionalInfo: ${response.additionalInfo} </td>`;
-                        
-                        const personContainer = document.getElementById("table");
 
-                        personContainer.innerHTML = html;
+                    const personContainer = document.getElementById("table");
+
+                    personContainer.innerHTML = html;
 
                 })
                 .catch(error => console.error('Error:', error));
@@ -65,7 +82,7 @@
         })
 
     })
-    
+
 </script>
 
 </html>
