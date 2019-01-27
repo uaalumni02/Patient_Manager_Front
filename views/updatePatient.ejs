@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Patient Manager</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="util.css">
+    <link rel="stylesheet" type="text/css" href="main.css">
+
+</head>
+
+<body>
+
+
+    <div class="container-contact100">
+        <div class="wrap-contact100">
+            <form id="PatientForm" class="contact100-form validate-form" method="PATCH">
+                <span class="contact100-form-title">
+                    Update Patient Information
+                </span>
+
+                <div class="wrap-input100  bg1">
+                    <span class="label-input100">Patient ID *</span>
+                    <input class="input100" id="patientId" type="text" name="name" placeholder="Enter Patient ID">
+                </div>
+
+                <div class="wrap-input100  bg1">
+                    <span class="label-input100">FULL NAME *</span>
+                    <input class="input100" id="name" type="text" name="name" placeholder="Enter Your Name">
+                </div>
+
+                <div class="wrap-input100  bg1 rs1-wrap-input100">
+                    <span class="label-input100">Email *</span>
+                    <input class="input100" type="text" name="email" id="email" placeholder="Enter Your Email ">
+                </div>
+
+                <div class="wrap-input100 bg1 rs1-wrap-input100">
+                    <span class="label-input100">Phone *</span>
+                    <input class="input100" id="phone" type="text" name="phone" placeholder="Enter Number Phone">
+                </div>
+
+                <div class="wrap-input100  bg1">
+                    <span class="label-input100">Address *</span>
+                    <input class="input100" id="address" type="text" name="name" placeholder="Enter Your Address">
+                </div>
+
+                <div class="wrap-input100 bg1 rs1-wrap-input100">
+                    <span class="label-input100">Medication *</span>
+                    <input class="input100" type="text" name="email" id="medication" placeholder="Enter Your Medication ">
+                </div>
+
+                <div class="wrap-input100 bg1 rs1-wrap-input100">
+                    <span class="label-input100">Diagnosis *</span>
+                    <input class="input100" type="text" name="email" id="diagnosis" placeholder="Enter Your Diagnosis">
+                </div>
+
+                <div class="wrap-input100 bg0 rs1-alert-validate">
+                    <span class="label-input100">Additional Information</span>
+                    <input class="input100" id="additional" name="message" placeholder="Your message here...">
+                </div>
+
+                <div class="container-contact100-form-btn">
+                    <button class="contact100-form-btn" type="submit">
+                        <span>
+                            Submit
+                            <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
+                        </span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</body>
+<script>
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const theForm = document.getElementById("PatientForm");
+
+        theForm.addEventListener("submit", (event) => {
+            event.preventDefault();
+
+            let id = document.getElementById("patientId").value;
+            let name = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+            let phone = document.getElementById("phone").value;
+            let address = document.getElementById("address").value;
+            let medication = document.getElementById("medication").value;
+            let diagnosis = document.getElementById("diagnosis").value;
+            let additionalInfo = document.getElementById("additional").value;
+
+            const token = localStorage.getItem('token');
+            const bearer = 'Bearer ' + token
+
+            fetch('http://localhost:3000/api/patient/' + id,  {
+                method: "PATCH",
+                headers: {
+                    'Authorization': bearer,
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    id: patientId,
+                    name: name,
+                    email: email,
+                    phone: phone,
+                    address: address,
+                    medication: medication,
+                    diagnosis: diagnosis,
+                    additionalInfo: additionalInfo
+                })
+            })
+                .then(res => res.json())
+                .then(response => {
+                    console.log('patient updated')
+                }).catch(error => console.error('Error:', error));
+        })
+    });
+
+
+</script>
+
+</html>
