@@ -3,26 +3,26 @@
 
 <head>
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-        <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-        <link rel="stylesheet" type="text/css" media="screen" href="newLogin.css" />
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="newLogin.css" />
 </head>
 
 <body>
-    <div id="fullscreen_bg" class="fullscreen_bg" >
+    <div id="fullscreen_bg" class="fullscreen_bg">
 
-    <div class="container">
+        <div class="container">
 
-        <form id="LoginForm" action="" method="POST"class="form-signin">
-            <h1 class="form-signin-heading text-muted">Patient Manager</h1>
-            <input type="text" class="form-control" id="username" placeholder="Username" required="" autofocus="">
-            <input type="password" class="form-control" id="password" placeholder="Password" required="">
-            <button class="btn btn-lg btn-primary btn-block" type="submit">
-                Sign In
-            </button>
-            <a href="http://localhost:8080/register">Click link to register</a>
-        </form>
+            <form id="LoginForm" action="" method="POST" class="form-signin">
+                <h1 class="form-signin-heading text-muted">Patient Manager</h1>
+                <input type="text" class="form-control" id="username" placeholder="Username" required="" autofocus="">
+                <input type="password" class="form-control" id="password" placeholder="Password" required="">
+                <button class="btn btn-lg btn-primary btn-block" type="submit">
+                    Sign In
+                </button>
+                <a href="http://localhost:8080/register">Click link to register</a>
+            </form>
 
-    </div>
+        </div>
 
 </body>
 <script>
@@ -46,6 +46,7 @@
                     password: password
                 })
             })
+
                 .then(res => res.json())
                 .then(response => {
                     localStorage.setItem('token', response.token);
@@ -53,8 +54,6 @@
                 }).catch(error => console.error('Error:', error));
         })
     });
-
 </script>
 
 </html>
-

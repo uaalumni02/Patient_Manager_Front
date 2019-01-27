@@ -23,7 +23,7 @@
 
                 <div class="wrap-input100  bg1">
                     <span class="label-input100">Search for Patients *</span>
-                    <input class="input100" id="search" type="text" name="name" placeholder="Enter Patient ID">
+                    <input class="input100" id="search" type="text" name="name" placeholder="Enter Patient Name">
                 </div>
 
                 <div class="container-contact100-form-btn">
@@ -51,10 +51,10 @@
 
         theForm.addEventListener("submit", (event) => {
             event.preventDefault();
-            let id = document.getElementById("search").value;
+            let name = document.getElementById("search").value;
             const token = localStorage.getItem('token');
             const bearer = 'Bearer ' + token
-            fetch('http://localhost:3000/api/patient/' + id, {
+            fetch('http://localhost:3000/api/patient/' + name, {
                 method: "GET",
                 headers: {
                     'Authorization': bearer,
