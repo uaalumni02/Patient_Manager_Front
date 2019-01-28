@@ -37,6 +37,10 @@ app.get('/confirmation', (req, res) => {
 app.get('/update', (req, res) => {
     return res.render('updatePatient')
 });
+
+app.get('/schedule', (req, res) => {
+    return res.render('addAppts')
+});
     
 
 
