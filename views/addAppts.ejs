@@ -24,7 +24,7 @@
 					</div>
 					<div class="gaps">
 						<p>Location</p>
-						<select id="location" class="form-control" style="height: 35px";>
+						<select id="location" class="form-control" style="height: 35px" ;>
 							<option></option>
 							<option>Office A</option>
 							<option>Office B</option>
@@ -34,12 +34,16 @@
 					</div>
 
 				</div>
+
 				<div class="right-agileinfo same">
 					<div class="gaps">
 						<p>Select Date & Time</p>
-						<input id="datepicker1" name="Text" type="text" value="" required="">
+						<input id="datepicker1" name="Text" type="datetime-local" value="" min="2019-01-29T00:00" max="2019-12-31T00:00" required="" style="height: 28px">
+					<br>
 					</div>
+
 					<div class="gaps">
+						<br>
 						<p>Physician</p>
 						<select id="physician" class="form-control" style="height: 35px">
 							<option></option>
@@ -73,7 +77,7 @@
 			let patientId = document.getElementById("patientId").value;
 			let location = document.getElementById("location").value;
 			let appointmentDate = document.getElementById("datepicker1").value;
-			let attendees= document.getElementById("physician").value;
+			let attendees = document.getElementById("physician").value;
 
 			const token = localStorage.getItem('token');
 			const bearer = 'Bearer ' + token
