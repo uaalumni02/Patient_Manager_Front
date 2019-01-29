@@ -126,6 +126,7 @@ input[type=submit]:hover {
     -o-transition: 0.5s all ease;
     -ms-transition: 0.5s all ease;
 }
+
 .arrows-reserve{
 	    position:relative;
 		color:#EFA52C;
@@ -543,4 +544,3 @@ p.wickedpicker__title {
 		margin: 1.1em 1.5em 0;
 	}
 }
-/*--responsive--*/
