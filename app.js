@@ -30,10 +30,6 @@ app.get('/patients', (req, res) => {
     return res.render('addPatients')
 });
 
-app.get('/confirmation', (req, res) => {
-    return res.render('patientConfirm')
-});
-
 app.get('/update', (req, res) => {
     return res.render('updatePatient')
 });
