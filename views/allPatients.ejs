@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>Patient Manager</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="css/wickedpicker.css" rel="stylesheet" type='text/css' media="all" />
+    <link href="css/style.css" rel='stylesheet' type='text/css' />
+
+</head>
+
+<body>
+    <h1> Patient Information </h1>
+
+    <table id="table" style="width:100%">
+
+
+    </table>
+
+</body>
+
+<script>
+
+    window.addEventListener("load", () => {
+        const token = localStorage.getItem('token');
+        const bearer = 'Bearer ' + token
+        fetch('http://localhost:3000/api/patient/', {
+            method: "GET",
+            headers: {
+                'Authorization': bearer,
+            }
+        })
+            .then(res => res.json())
+            .then(response => {
+
+                let html = '';
+
+                for (var i = 0; i < response.length; i++) {
+
+                    html += '<tr>';
+                    html += `<td>  Name: ${response[i].name} </td>`;
+                    html += `<td>  Email: ${response[i].email}  </td>`;
+                    html += `<td>  Phone: ${response[i].phone} </td>`;
+                    html += `<td>  Address: ${response[i].address} </td>`;
+                    html += `<td>  Medication: ${response[i].medication} </td>`;
+                    html += `<td>  Diagnosis: ${response[i].diagnosis}  </td>`;
+                    html += `<td>  AdditionalInfo: ${response[i].additionalInfo} </td>`;
+                    html += '</tr>';
+                }
+                const personContainer = document.getElementById("table");
+
+                personContainer.innerHTML = html;
+
+            })
+            .catch(error => console.error('Error:', error));
+
+    })
+
+
+</script>
+
+</html>

@@ -41,6 +41,10 @@ app.get('/update', (req, res) => {
 app.get('/schedule', (req, res) => {
     return res.render('addAppts')
 });
+
+app.get('/allpatients', (req, res) => {
+    return res.render('allPatients')
+});
     
 
 
