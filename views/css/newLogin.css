@@ -82,3 +82,6 @@ body {
   #searchFormContainer {
     display: none
 }
+#navbar {
+  display: none
+}

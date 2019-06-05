@@ -14,11 +14,7 @@ app.use(bodyParser.json());
 
 app.use(express.static(__dirname + '/views'))
 
-app.get('/search', (req, res) => {
-    return res.render('search')
-});
-
-app.get('/login', (req, res) => {
+app.get('/', (req, res) => {
     return res.render('newLogin')
 });
 

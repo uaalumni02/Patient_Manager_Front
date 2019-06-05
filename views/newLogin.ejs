@@ -7,56 +7,89 @@
     <link rel="stylesheet" type="text/css" media="screen" href="css/newLogin.css" />
     <link rel="stylesheet" type="text/css" href="css/util.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
-    <link href="css/search.css" rel='stylesheet' type='text/css' />
+    <link href="css/style.css" rel='stylesheet' type='text/css' />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 
 <body>
-    
+    <nav id="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Patient Manager </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/patients">Add Patient</a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="/update" class="nav-link">Update Patient</a>
+                </li>
+                <li class="nav-item">
+						<a href="/schedule" class="nav-link">Schedule Appointment</a>
+					</li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/allpatients">All Patients</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
     <div id="fullscreen_bg" class="fullscreen_bg">
 
         <div class="container">
+            <br></br>
+        <form id="LoginForm" action="" method="POST" class="form-signin">
+            <h1 class="form-signin-heading text-muted">Patient Manager</h1>
+            <input type="text" class="form-control" id="username" placeholder="Username" required="">
+            <input type="password" class="form-control" id="password" placeholder="Password" required="">
+            <button class="btn btn-lg btn-primary btn-block" type="submit">
+                Sign In
+            </button>
+            <a href="http://localhost:8080/register">Click link to register</a>
+        </form>
 
-            <form id="LoginForm" action="" method="POST" class="form-signin">
-                <h1 class="form-signin-heading text-muted">Patient Manager</h1>
-                <input type="text" class="form-control" id="username" placeholder="Username" required="">
-                <input type="password" class="form-control" id="password" placeholder="Password" required="">
-                <button class="btn btn-lg btn-primary btn-block" type="submit">
-                    Sign In
-                </button>
-                <a href="http://localhost:8080/register">Click link to register</a>
+    </div>
+    <center>
+    <div id="searchFormContainer" class="container-contact100">
+        <div class="wrap-contact100">
+            <form id="searchForm" class="contact100-form validate-form" action="" method="POST">
+                <span class="contact100-form-title">
+                    Patient Information
+                </span>
+
+                <div class="wrap-input100  bg1">
+                    <span class="label-input100">Search for Patients *</span>
+                    <input class="input100" id="search" type="text" name="name" placeholder="Enter Patient Name">
+                </div>
+
+                <div class="container-contact100-form-btn">
+                    <button class="contact100-form-btn" type="submit">
+                        <span>
+                            Submit
+                            <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
+                        </span>
+                    </button>
+                </div>
             </form>
 
         </div>
-        <div  id="searchFormContainer" class="container-contact100">
-            <div class="wrap-contact100">
-                <form id="searchForm" class="contact100-form validate-form" action="" method="POST">
-                    <span class="contact100-form-title">
-                        Patient Information
-                    </span>
-    
-                    <div class="wrap-input100  bg1">
-                        <span class="label-input100">Search for Patients *</span>
-                        <input class="input100" id="search" type="text" name="name" placeholder="Enter Patient Name">
-                    </div>
-    
-                    <div class="container-contact100-form-btn">
-                        <button class="contact100-form-btn" type="submit">
-                            <span>
-                                Submit
-                                <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true" ></i>
-                            </span>
-                        </button>
-                    </div>
-                </form>
-    
-            </div>
-    
-            <table id="table" style="width:100%">
-    
-            </table>
-        </div>
-    
+    </center>
+
+        <table id="table" style="width:100%">
+
+        </table>
+    </div>
+
 </body>
 <script>
 
@@ -84,14 +117,15 @@
                     localStorage.setItem('token', response.token);
                     const password = response.token
                     const localStoragePswd = localStorage.getItem('token', response.token);
-                    if(password === localStoragePswd) {
+                    if (password === localStoragePswd) {
                         document.getElementById('searchFormContainer').style.display = "block";
+                        document.getElementById('navbar').style.display = "block";
                         document.getElementById('LoginForm').style.display = "none";
                     } else {
                         alert('Incorrect Password')
                     }
                 }).catch(error => console.error('Error:', error));
-                $('#LoginForm').get(0).reset();
+            $('#LoginForm').get(0).reset();
         })
     });
 </script>
@@ -129,7 +163,7 @@
 
                 })
                 .catch(error => console.error('Error:', error));
-                $('#searchForm').get(0).reset();
+            $('#searchForm').get(0).reset();
 
         })
 
