@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="css/newLogin.css" />
+    <link rel="stylesheet" type="text/css" href="css/util.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link href="css/style.css" rel='stylesheet' type='text/css' />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Patient Manager </a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="">Search</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/patients">Add Patient</a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="/update" class="nav-link">Update Patient</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/schedule" class="nav-link">Schedule Appointment</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/allpatients">All Patients</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" onchange="logOut()" href="#">Log Out</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <center>
+        <div id="searchFormContainer" style="margin-top: -20px" class="container-contact100">
+            <div class="wrap-contact100" style="margin-top: -170px">
+                <form id="searchForm" class="contact100-form validate-form" action="" method="POST">
+                    <span class="contact100-form-title">
+                        Patient Information
+                    </span>
+
+                    <div class="wrap-input100  bg1">
+                        <span class="label-input100">Search for Patients *</span>
+                        <input class="input100" id="search" type="text" name="name" placeholder="Enter Patient Name">
+                    </div>
+
+                    <div class="container-contact100-form-btn">
+                        <button class="contact100-form-btn" type="submit">
+                            <span>
+                                Submit
+                                <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
+                            </span>
+                        </button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </center>
+    <div id="patientInfo" class="container">
+        <div id="patient"></div>
+    </div>
+</body>
+<script src="logOut"></script>
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const theForm = document.getElementById("searchForm");
+
+        theForm.addEventListener("submit", (event) => {
+            event.preventDefault();
+            let name = document.getElementById("search").value;
+            const token = localStorage.getItem('token');
+            const bearer = 'Bearer ' + token
+            fetch('http://localhost:3000/api/patient/' + name, {
+                method: "GET",
+                headers: {
+                    'Authorization': bearer,
+                }
+            })
+                .then(res => res.json())
+                .then(response => {
+                    document.getElementById('searchFormContainer').style.display = "none";
+                    let html = '';
+                    html += ` <div class="card patient-option"  style="width: 18rem;">`
+                    html += `<div class="card-body">`
+                    html += `<h5>  Name: ${response.name} </h5>`;
+                    html += `<h6>  Email: ${response.email}  </h6>`;
+                    html += `<h6>  Phone: ${response.phone} </h6>`;
+                    html += `<h6>  Address: ${response.address} </h6>`;
+                    html += `<h6>  Medication: ${response.medication} </h6>`;
+                    html += `<h6>  Diagnosis: ${response.diagnosis}  </h6>`;
+                    html += `<h6>  AdditionalInfo: ${response.additionalInfo} </h6>`;
+                    html += `</div>`;
+                    html += `</div>`;
+
+                    const patientContainer = document.getElementById("patient");
+
+                    patientContainer.innerHTML = html;
+
+                })
+                .catch(error => console.error('Error:', error));
+            $('#searchForm').get(0).reset();
+
+        })
+
+    })
+
+</script>
+
+</html>

@@ -37,6 +37,10 @@ app.get('/schedule', (req, res) => {
 app.get('/allpatients', (req, res) => {
     return res.render('allPatients')
 });
+
+app.get('/search', (req, res) => {
+    return res.render('search')
+});
     
 
 
