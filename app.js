@@ -14,6 +14,8 @@ app.use(bodyParser.json());
 
 app.use(express.static(__dirname + '/views'))
 
+app.use('/public', express.static(__dirname + '/public'))
+
 app.get('/', (req, res) => {
     return res.render('newLogin')
 });

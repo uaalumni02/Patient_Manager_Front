@@ -45,13 +45,13 @@
 					<a class="nav-link" href="/allpatients">All Patients</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">Log Out</a>
+					<a class="nav-link" onclick="logOut()" href="#">Log Out</a>
 				</li>
 			</ul>
 		</div>
 	</nav>
 
-	<div class="container-contact100">
+	<div class="container-contact100" style="margin-top: -170px">
 		<div class="wrap-contact100">
 			<form id="PatientForm" class="contact100-form validate-form" method="POST">
 				<span class="contact100-form-title">
@@ -60,38 +60,38 @@
 
 				<div class="wrap-input100  bg1">
 					<span class="label-input100">FULL NAME *</span>
-					<input class="input100" id="name" type="text" name="name" placeholder="Enter Your Name">
+					<input class="input100" id="name" type="text" name="name" placeholder="Enter Your Name" required>
 				</div>
 
 				<div class="wrap-input100  bg1 rs1-wrap-input100">
 					<span class="label-input100">Email *</span>
-					<input class="input100" type="text" name="email" id="email" placeholder="Enter Your Email ">
+					<input class="input100" type="text" name="email" id="email" placeholder="Enter Your Email" required>
 				</div>
 
 				<div class="wrap-input100 bg1 rs1-wrap-input100">
 					<span class="label-input100">Phone *</span>
-					<input class="input100" id="phone" type="text" name="phone" placeholder="Enter Number Phone">
+					<input class="input100" id="phone" type="text" name="phone" placeholder="Enter Number Phone" required>
 				</div>
 
 				<div class="wrap-input100  bg1">
 					<span class="label-input100">Address *</span>
-					<input class="input100" id="address" type="text" name="name" placeholder="Enter Your Address">
+					<input class="input100" id="address" type="text" name="name" placeholder="Enter Your Address" required>
 				</div>
 
 				<div class="wrap-input100 bg1 rs1-wrap-input100">
 					<span class="label-input100">Medication *</span>
 					<input class="input100" type="text" name="email" id="medication"
-						placeholder="Enter Your Medication ">
+						placeholder="Enter Your Medication " required>
 				</div>
 
 				<div class="wrap-input100 bg1 rs1-wrap-input100">
 					<span class="label-input100">Diagnosis *</span>
-					<input class="input100" type="text" name="email" id="diagnosis" placeholder="Enter Your Diagnosis">
+					<input class="input100" type="text" name="email" id="diagnosis" placeholder="Enter Your Diagnosis" required>
 				</div>
 
 				<div class="wrap-input100 bg0 rs1-alert-validate">
 					<span class="label-input100">Additional Information</span>
-					<input class="input100" id="additional" name="message" placeholder="Your message here...">
+					<input class="input100" id="additional" name="message" placeholder="Your message here..." required> 
 				</div>
 
 				<div class="container-contact100-form-btn">
@@ -107,6 +107,7 @@
 	</div>
 
 </body>
+<script src="/public/logOut.js"></script>
 <script>
 
 	document.addEventListener("DOMContentLoaded", () => {

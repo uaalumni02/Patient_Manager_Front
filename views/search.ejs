@@ -44,7 +44,7 @@
                     <a class="nav-link" href="/allpatients">All Patients</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" onchange="logOut()" href="#">Log Out</a>
+                    <a class="nav-link" onclick="logOut()" href="#">Log Out</a>
                 </li>
             </ul>
         </div>
@@ -59,7 +59,7 @@
 
                     <div class="wrap-input100  bg1">
                         <span class="label-input100">Search for Patients *</span>
-                        <input class="input100" id="search" type="text" name="name" placeholder="Enter Patient Name">
+                        <input class="input100" id="search" type="text" name="name" placeholder="Enter Patient Name" required>
                     </div>
 
                     <div class="container-contact100-form-btn">
@@ -79,8 +79,8 @@
         <div id="patient"></div>
     </div>
 </body>
-<script src="logOut"></script>
-</script>
+<script src="/public/logOut.js"></script>
+
 <script>
     document.addEventListener("DOMContentLoaded", () => {
         const theForm = document.getElementById("searchForm");

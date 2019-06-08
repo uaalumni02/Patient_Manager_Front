@@ -1,0 +1,3 @@
+const logOut = () => {
+   localStorage.clear()
+    } 

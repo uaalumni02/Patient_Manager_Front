@@ -447,6 +447,12 @@ li.nav-item {
     margin-right: 15px;
     border-color: silver;
 }
+#welcomePage {
+    background-image: url('https://images.vexels.com/media/users/3/74386/raw/82d2be8e8067852305a722add1d37091-asterisk-heartbeat-line-medical-logo.jpg');
+    width: 100vw;
+	height: 100vh;
+	margin-top: -170px
+}
 @media(max-width:480px){
 	.left-agileits-w3layouts {
 		width: 100%;
