@@ -61,8 +61,7 @@
 <script src="/public/logOut.js"></script>
 
 <script>
-
-  window.addEventListener("load", () => {
+  window.addEventListener("load", (req, res) => {
     const token = localStorage.getItem('token');
     const bearer = 'Bearer ' + token
     fetch('http://localhost:3000/api/patient/', {
@@ -73,7 +72,7 @@
     })
       .then(res => res.json())
       .then(response => {
-
+       
         let html = '';
 
         for (var i = 0; i < response.length; i++) {

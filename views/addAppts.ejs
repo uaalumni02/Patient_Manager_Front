@@ -14,6 +14,8 @@
 		crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
 
 </head>
 
@@ -55,20 +57,25 @@
 		</div>
 	</nav>
 	<br></br>
-
+<div id='confirmation'></div>
+<br></br>
 	<h1> Appointment Information </h1>
+	<br></br>
 	<div class="bg-agile">
 		<div class="book-appointment">
 			<h2>Make an appointment</h2>
 			<form action="#" id="ApptForm" method="post">
 				<div class="left-agileits-w3layouts same">
+
 					<div class="gaps">
-						<p>Patient ID</p>
-						<input id="patientId" type="text" name="Patient Name" placeholder="" required="" />
+						<p>Patient Name</p>
+						<select id="patientId"  class="form-control" style="height: 35px" required>
+						</select>
 					</div>
+
 					<div class="gaps">
 						<p>Location</p>
-						<select id="location" class="form-control" style="height: 35px" ;>
+						<select id="location" class="form-control" style="height: 35px"  required>
 							<option></option>
 							<option>Office A</option>
 							<option>Office B</option>
@@ -111,9 +118,37 @@
 
 </body>
 <script src="/public/logOut.js"></script>
+<script>
+	window.addEventListener("load", (req, res) => {
+		const token = localStorage.getItem('token');
+		const bearer = 'Bearer ' + token
+		fetch('http://localhost:3000/api/patient/', {
+			method: "GET",
+			headers: {
+				'Authorization': bearer,
+			}
+		})
+			.then(res => res.json())
+			.then(response => {
+				let html = '';
+				for (var i = 0; i < response.length; i++) {
+					html += '<option>';
+					html += '</option>';
+					html += `<option value="${response[i]._id}"> ${response[i].name} </option>`;
+				}
+				const patientContainer = document.getElementById("patientId");
+
+				patientContainer.innerHTML = html;
+
+			})
+			.catch(error => console.error('Error:', error));
+
+	})
+
+
+</script>
 
 <script>
-
 	document.addEventListener("DOMContentLoaded", () => {
 		const theForm = document.getElementById("ApptForm");
 
@@ -143,8 +178,13 @@
 			})
 				.then(res => res.json())
 				.then(response => {
-					console.log("appt added")
+					console.log(response.patient.name)
+                    let html = '';
+                    html += `<h4 style="text-align:center;">  Appointment scheduled for ${response.patient.name}! </h4>`;
+                    const confirmContainer = document.getElementById("confirmation");
+                    confirmContainer.innerHTML = html;
 				}).catch(error => console.error('Error:', error));
+				$('#ApptForm').get(0).reset();
 		})
 	});
 

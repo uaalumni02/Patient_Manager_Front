@@ -33,7 +33,7 @@ app.get('/update', (req, res) => {
 });
 
 app.get('/schedule', (req, res) => {
-    return res.render('addAppts')
+    return res.render('addAppts');
 });
 
 app.get('/allpatients', (req, res) => {
@@ -43,7 +43,6 @@ app.get('/allpatients', (req, res) => {
 app.get('/search', (req, res) => {
     return res.render('search')
 });
-    
 
 
 app.listen(port, () => console.log('server is running'));
