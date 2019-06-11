@@ -105,9 +105,9 @@ input[type=submit] {
     padding: 9px 30px;
     font-size: 1.04em;
     cursor: pointer;
-    border: 2px solid #ff9900;
+    border: 2px solid black;
     outline: none;
-    background: #ff9900;
+    background: black;
     font-weight: 500;
     font-family: 'Roboto', sans-serif;
     transition: 0.5s all ease;
