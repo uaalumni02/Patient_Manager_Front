@@ -51,11 +51,10 @@
   </nav>
 
   <h1> Patient Information </h1>
-
-  <table id="table" style="width:100%">
-
-
-  </table>
+  <br></br>
+  <div id="patientInfo" class="container">
+      <div id="patient"></div>
+  </div>
 
 </body>
 <script src="/public/logOut.js"></script>
@@ -72,24 +71,26 @@
     })
       .then(res => res.json())
       .then(response => {
-       
+
         let html = '';
 
         for (var i = 0; i < response.length; i++) {
 
-          html += '<tr>';
-          html += `<td>  Name: ${response[i].name} </td>`;
-          html += `<td>  Email: ${response[i].email}  </td>`;
-          html += `<td>  Phone: ${response[i].phone} </td>`;
-          html += `<td>  Address: ${response[i].address} </td>`;
-          html += `<td>  Medication: ${response[i].medication} </td>`;
-          html += `<td>  Diagnosis: ${response[i].diagnosis}  </td>`;
-          html += `<td>  AdditionalInfo: ${response[i].additionalInfo} </td>`;
-          html += '</tr>';
+          html += ` <div class="card patient-option"  style="width: 18rem;">`
+          html += `<div class="card-body">`
+          html += `<h5>  Name: ${response[i].name} </h5>`;
+          html += `<h6>  Email: ${response[i].email}  </h6>`;
+          html += `<h6>  Phone: ${response[i].phone} </h6>`;
+          html += `<h6>  Address: ${response[i].address} </h6>`;
+          html += `<h6>  Medication: ${response[i].medication} </h6>`;
+          html += `<h6>  Diagnosis: ${response[i].diagnosis}  </h6>`;
+          html += `<h6>  AdditionalInfo: ${response[i].additionalInfo} </h6>`;
+          html += `</div>`;
+          html += `</div>`;
         }
-        const personContainer = document.getElementById("table");
+        const patientContainer = document.getElementById("patient");
 
-        personContainer.innerHTML = html;
+        patientContainer.innerHTML = html;
 
       })
       .catch(error => console.error('Error:', error));

@@ -100,7 +100,6 @@
             })
                 .then(res => res.json())
                 .then(response => {
-                    console.log(response)
                     if (response.name != undefined) {
                         document.getElementById('searchFormContainer').style.display = "none";
                         let html = '';
