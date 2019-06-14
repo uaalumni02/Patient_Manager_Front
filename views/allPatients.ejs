@@ -33,10 +33,6 @@
         <li class="nav-item">
           <a class="nav-link" href="/patients">Add Patient</a>
         </li>
-
-        <li class="nav-item">
-          <a href="/update" class="nav-link">Update Patient</a>
-        </li>
         <li class="nav-item">
           <a href="/schedule" class="nav-link">Schedule Appointment</a>
         </li>
@@ -53,9 +49,8 @@
   <h1> Patient Information </h1>
   <br></br>
   <div id="patientInfo" class="container">
-      <div id="patient"></div>
+    <div id="patient"></div>
   </div>
-
 </body>
 <script src="/public/logOut.js"></script>
 
@@ -85,6 +80,13 @@
           html += `<h6>  Medication: ${response[i].medication} </h6>`;
           html += `<h6>  Diagnosis: ${response[i].diagnosis}  </h6>`;
           html += `<h6>  AdditionalInfo: ${response[i].additionalInfo} </h6>`;
+          html += `<br>`
+          html += `</br>`
+          html += `<center>`
+          html += `<div id="searchId">`
+          html += `<a  type="submit" href="/update/${response[i]._id}">Edit Record</a>`
+          html += `</div>`
+          html += `</center>`
           html += `</div>`;
           html += `</div>`;
         }
@@ -96,8 +98,6 @@
       .catch(error => console.error('Error:', error));
 
   })
-
-
 </script>
 
 </html>

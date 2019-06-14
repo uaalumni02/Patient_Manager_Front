@@ -28,7 +28,7 @@ app.get('/patients', (req, res) => {
     return res.render('addPatients')
 });
 
-app.get('/update', (req, res) => {
+app.get('/update/:id', (req, res) => {
     return res.render('updatePatient')
 });
 
