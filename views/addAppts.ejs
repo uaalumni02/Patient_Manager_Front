@@ -13,9 +13,11 @@
 		crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
-
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+		crossorigin="anonymous"></script>
 </head>
 
 <body style="background-color: #eee">
@@ -52,8 +54,8 @@
 		</div>
 	</nav>
 	<br></br>
-<div id='confirmation'></div>
-<br></br>
+	<div id='confirmation'></div>
+	<br></br>
 	<h1> Appointment Information </h1>
 	<br></br>
 	<div class="bg-agile">
@@ -64,13 +66,13 @@
 
 					<div class="gaps">
 						<p>Patient Name</p>
-						<select id="patientId"  class="form-control" style="height: 35px" required>
+						<select id="patientId" class="form-control" style="height: 35px" required>
 						</select>
 					</div>
 
 					<div class="gaps">
 						<p>Location</p>
-						<select id="location" class="form-control" style="height: 35px"  required>
+						<select id="location" class="form-control" style="height: 35px" required>
 							<option></option>
 							<option>Office A</option>
 							<option>Office B</option>
@@ -174,12 +176,12 @@
 			})
 				.then(res => res.json())
 				.then(response => {
-                    let html = '';
-                    html += `<h4 style="text-align:center;">  Appointment scheduled for ${response.patient.name}! </h4>`;
-                    const confirmContainer = document.getElementById("confirmation");
-                    confirmContainer.innerHTML = html;
+					let html = '';
+					html += `<h4 style="text-align:center;">  Appointment scheduled for ${response.patient.name}! </h4>`;
+					const confirmContainer = document.getElementById("confirmation");
+					confirmContainer.innerHTML = html;
 				}).catch(error => console.error('Error:', error));
-				$('#ApptForm').get(0).reset();
+			$('#ApptForm').get(0).reset();
 		})
 	});
 
