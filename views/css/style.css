@@ -448,10 +448,13 @@ li.nav-item {
     border-color: silver;
 }
 #welcomePage {
-    background-image: url('https://images.vexels.com/media/users/3/74386/raw/82d2be8e8067852305a722add1d37091-asterisk-heartbeat-line-medical-logo.jpg');
+    background-image: url('https://img.thedailybeast.com/image/upload/c_crop,d_placeholder_euli9k,h_1439,w_2560,x_0,y_0/dpr_1.5/c_limit,w_1044/fl_lossy,q_auto/v1492724018/articles/2013/08/10/is-psychiatry-being-stumped-by-the-mental-illnesses-it-has-to-treat/130809-psychiatry-identity-crisis-tiffany_x8xbja');
     width: 100vw;
 	height: 100vh;
 	margin-top: -170px
+}
+#apptHeader {
+	display: none
 }
 @media(max-width:480px){
 	.left-agileits-w3layouts {

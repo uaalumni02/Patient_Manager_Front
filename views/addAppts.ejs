@@ -18,7 +18,7 @@
 
 </head>
 
-<body>
+<body style="background-color: #eee">
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		<a class="navbar-brand" href="#">
 		</a>
@@ -153,6 +153,7 @@
 			let patientId = document.getElementById("patientId").value;
 			let location = document.getElementById("location").value;
 			let appointmentDate = document.getElementById("datepicker1").value;
+			console.log(appointmentDate)
 			let attendees = document.getElementById("physician").value;
 
 			const token = localStorage.getItem('token');
@@ -173,7 +174,6 @@
 			})
 				.then(res => res.json())
 				.then(response => {
-					console.log(response.patient.name)
                     let html = '';
                     html += `<h4 style="text-align:center;">  Appointment scheduled for ${response.patient.name}! </h4>`;
                     const confirmContainer = document.getElementById("confirmation");

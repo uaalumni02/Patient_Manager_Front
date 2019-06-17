@@ -11,9 +11,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.js"></script>
 </head>
 
-<body>
+<body style="background-color: #eee">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="#">
         </a>
@@ -51,13 +52,13 @@
                 <div id="notFound"></div>
                 <form id="searchForm" class="contact100-form validate-form" action="" method="POST">
                     <span class="contact100-form-title">
-                        Patient Information
+                        Patient Appointment Information
                     </span>
 
                     <div class="wrap-input100  bg1">
-                        <span class="label-input100">Search for Patients *</span>
-                        <input class="input100" id="search" type="text" name="name" placeholder="Enter Patient Name"
-                            required>
+                        <span class="label-input100">Search for Patient Appointment *</span>
+                        <select class="input100" id="patientId" type="text" name="name" placeholder="Enter Patient Name"
+                            required> </select>
                     </div>
 
                     <div class="container-contact100-form-btn">
@@ -73,11 +74,47 @@
             </div>
         </div>
     </center>
-    <div id="patientInfo" class="container">
-        <div id="patient"></div>
+    <div id="apptHeader">
+        <h1 style="color: black"> Appointment Information </h1>
     </div>
+    <br></br>
+    <center>
+        <div id="patientInfo" class="container">
+            <div id="patient"></div>
+        </div>
+    </center>
 </body>
 <script src="/public/logOut.js"></script>
+<script>
+    window.addEventListener("load", (req, res) => {
+        const token = localStorage.getItem('token');
+        const bearer = 'Bearer ' + token
+        fetch('http://localhost:3000/api/patient/', {
+            method: "GET",
+            headers: {
+                'Authorization': bearer,
+            }
+        })
+            .then(res => res.json())
+            .then(response => {
+                let html = '';
+                for (var i = 0; i < response.length; i++) {
+                    html += '<option>';
+                    html += '</option>';
+                    html += `<option value="${response[i]._id}"> ${response[i].name} </option>`;
+                }
+                const patientContainer = document.getElementById("patientId");
+
+                patientContainer.innerHTML = html;
+
+            })
+            .catch(error => console.error('Error:', error));
+
+    })
+
+
+</script>
+
 
 <script>
     document.addEventListener("DOMContentLoaded", () => {
@@ -85,10 +122,10 @@
 
         theForm.addEventListener("submit", (event) => {
             event.preventDefault();
-            let name = document.getElementById("search").value;
+            let patientId = document.getElementById("patientId").value;
             const token = localStorage.getItem('token');
             const bearer = 'Bearer ' + token
-            fetch('http://localhost:3000/api/patient/' + name, {
+            fetch('http://localhost:3000/api/appointment/' + patientId, {
                 method: "GET",
                 headers: {
                     'Authorization': bearer,
@@ -96,18 +133,16 @@
             })
                 .then(res => res.json())
                 .then(response => {
-                    if (response.name != undefined) {
+                    if (response.attendees != undefined) {
+                        const dateString = moment.unix(response.appointmentDate).format('YYYY-MM-DD hh:mmA')
                         document.getElementById('searchFormContainer').style.display = "none";
+                        document.getElementById('apptHeader').style.display = "block";
                         let html = '';
-                        html += ` <div class="card patient-option"  style="width: 18rem;">`
+                        html += ` <div class="card patient-option"  style="width: 50rem;">`
                         html += `<div class="card-body">`
-                        html += `<h5>  Name: ${response.name} </h5>`;
-                        html += `<h6>  Email: ${response.email}  </h6>`;
-                        html += `<h6>  Phone: ${response.phone} </h6>`;
-                        html += `<h6>  Address: ${response.address} </h6>`;
-                        html += `<h6>  Medication: ${response.medication} </h6>`;
-                        html += `<h6>  Diagnosis: ${response.diagnosis}  </h6>`;
-                        html += `<h6>  AdditionalInfo: ${response.additionalInfo} </h6>`;
+                        html += `<h5>  Physician: ${response.attendees} </h5>`;
+                        html += `<h6>  Location: ${response.location}  </h6>`;
+                        html += `<h6>  Appointment: ${dateString} </h6>`;
                         html += `</div>`;
                         html += `</div>`;
 
@@ -117,7 +152,7 @@
 
                     } else {
                         let html = '';
-                        html += `<h6>****Patient not found</h6>`;
+                        html += `<h6>****No Appointment Scheduled</h6>`;
                         const messageContainer = document.getElementById("notFound");
                         messageContainer.innerHTML = html;
                     }
