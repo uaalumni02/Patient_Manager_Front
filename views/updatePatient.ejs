@@ -51,6 +51,7 @@
 
     <div class="container-contact100" style="margin-top: -20px">
         <div class="wrap-contact100">
+            <div id="confirm"></div>
             <form id="PatientForm" class="contact100-form validate-form" method="PATCH">
                 <span class="contact100-form-title">
                     Update Patient Information
@@ -170,8 +171,9 @@
                 .then(res => res.json())
                 .then(response => {
                     let html = '';
-                    html += `<h4 style="text-align:center;">Information Updated!</h4>`;
-                    const confirmContainer = document.getElementById("PatientForm");
+                    html += `<h3 style="text-align:center;">Information Updated!</h3>`;
+                    const confirmContainer = document.getElementById("confirm");
+                    confirmContainer.innerHTML = html;
                 }).catch(error => console.error('Error:', error));
         })
     });
