@@ -118,58 +118,6 @@
 
 </script>
 
-
-<!-- <script>
-    document.addEventListener("DOMContentLoaded", () => {
-        const theForm = document.getElementById("searchForm");
-
-        theForm.addEventListener("submit", (event) => {
-            event.preventDefault();
-            let patientId = document.getElementById("patientId").value;
-            const token = localStorage.getItem('token');
-            const bearer = 'Bearer ' + token
-            fetch('http://localhost:3000/api/appointment/' + patientId, {
-                method: "GET",
-                headers: {
-                    'Authorization': bearer,
-                }
-            })
-                .then(res => res.json())
-                .then(response => {
-                    if (response.attendees != undefined) {
-                        const dateString = moment.unix(response.appointmentDate).format('YYYY-MM-DD hh:mmA')
-                        document.getElementById('searchFormContainer').style.display = "none";
-                        document.getElementById('apptHeader').style.display = "block";
-                        let html = '';
-                        html += ` <div class="card patient-option"  style="width: 50rem;">`
-                        html += `<div class="card-body">`
-                        html += `<h5>  Physician: ${response.attendees} </h5>`;
-                        html += `<h6>  Location: ${response.location}  </h6>`;
-                        html += `<h6>  Appointment: ${dateString} </h6>`;
-                        html += `</div>`;
-                        html += `</div>`;
-                     
-                        const patientContainer = document.getElementById("patient");
-
-                        patientContainer.innerHTML = html;
-                       
-                    } else {
-                        let html = '';
-                        html += `<h6>****No Appointment Scheduled</h6>`;
-                        const messageContainer = document.getElementById("notFound");
-                        messageContainer.innerHTML = html;
-                    }
-                })
-                .catch(error => console.error('Error:', error));
-            $('#searchForm').get(0).reset();
-
-        })
-
-    })
-
-</script> -->
-
-
 <script>
     document.addEventListener("DOMContentLoaded", () => {
         const theForm = document.getElementById("searchForm");
