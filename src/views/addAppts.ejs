@@ -153,13 +153,12 @@
 			let patientId = document.getElementById("patientId").value;
 			let location = document.getElementById("location").value;
 			let appointmentDate = document.getElementById("datepicker1").value;
-			console.log(appointmentDate)
 			let attendees = document.getElementById("physician").value;
 
 			const token = localStorage.getItem('token');
 			const bearer = 'Bearer ' + token
 
-			fetch('http://localhost:3000/api/appointment', {
+			fetch('http://localhost:3000/api/appointment/', {
 				method: "post",
 				headers: {
 					'Authorization': bearer,
