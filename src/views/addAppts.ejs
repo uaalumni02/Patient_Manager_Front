@@ -117,7 +117,7 @@
 	window.addEventListener("load", (req, res) => {
 		const token = localStorage.getItem('token');
 		const bearer = 'Bearer ' + token
-		fetch('/api/patient/', {
+		fetch('https://patient-manager1.herokuapp.com/api/patient/', {
 			method: "GET",
 			headers: {
 				'Authorization': bearer,
@@ -158,7 +158,7 @@
 			const token = localStorage.getItem('token');
 			const bearer = 'Bearer ' + token
 
-			fetch('/api/appointment/', {
+			fetch('https://patient-manager1.herokuapp.com/api/appointment/', {
 				method: "post",
 				headers: {
 					'Authorization': bearer,

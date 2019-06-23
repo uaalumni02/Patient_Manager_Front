@@ -117,7 +117,7 @@
         var id = url.substring(url.lastIndexOf('/') + 1)
         const token = localStorage.getItem('token');
         const bearer = 'Bearer ' + token
-        fetch('/api/' + id, {
+        fetch('https://patient-manager1.herokuapp.com/api/' + id, {
             method: "GET",
             headers: {
                 'Authorization': bearer,
@@ -154,7 +154,7 @@
             let additionalInfo = document.getElementById("additional").value;
             const token = localStorage.getItem('token');
             const bearer = 'Bearer ' + token
-            fetch('/api/patient/' + id, {
+            fetch('https://patient-manager1.herokuapp.com/api/patient/' + id, {
                 method: "PATCH",
                 headers: {
                     'Authorization': bearer,

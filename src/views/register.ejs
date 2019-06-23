@@ -42,7 +42,7 @@
             let username = document.getElementById("username").value;
             let password = document.getElementById("password").value;
             event.preventDefault();
-            fetch('/api/user/', {
+            fetch('https://patient-manager1.herokuapp.com/api/user/', {
                 method: "post",
                 headers: {
                     'Content-Type': 'application/json',

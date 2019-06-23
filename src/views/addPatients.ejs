@@ -130,7 +130,7 @@
 			const token = localStorage.getItem('token');
 			const bearer = 'Bearer ' + token
 
-			fetch('/api/patient', {
+			fetch('https://patient-manager1.herokuapp.com/api/patient', {
 				method: "post",
 				headers: {
 					'Authorization': bearer,

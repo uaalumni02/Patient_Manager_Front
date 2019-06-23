@@ -92,7 +92,7 @@
     window.addEventListener("load", (req, res) => {
         const token = localStorage.getItem('token');
         const bearer = 'Bearer ' + token
-        fetch('/api/patient/', {
+        fetch('https://patient-manager1.herokuapp.com/api/patient/', {
             method: "GET",
             headers: {
                 'Authorization': bearer,
@@ -127,7 +127,7 @@
             let patientId = document.getElementById("patientId").value;
             const token = localStorage.getItem('token');
             const bearer = 'Bearer ' + token
-            fetch('/api/appointment/' + patientId, {
+            fetch('https://patient-manager1.herokuapp.com/api/appointment/' + patientId, {
                 method: "GET",
                 headers: {
                     'Authorization': bearer,
