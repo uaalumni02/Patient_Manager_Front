@@ -42,7 +42,7 @@
             let username = document.getElementById("username").value;
             let password = document.getElementById("password").value;
             event.preventDefault();
-            fetch('http://localhost:3000/api/user/', {
+            fetch('/api/user/', {
                 method: "post",
                 headers: {
                     'Content-Type': 'application/json',
@@ -54,7 +54,7 @@
             })
                 .then(res => res.json())
                 .then(response => {
-                    location.replace("http://localhost:8080/search")
+                    location.replace("/search")
                     console.log('user added')
                 }).catch(error => console.error('Error:', error));
         })

@@ -117,7 +117,7 @@
         var id = url.substring(url.lastIndexOf('/') + 1)
         const token = localStorage.getItem('token');
         const bearer = 'Bearer ' + token
-        fetch('http://localhost:3000/api/' + id, {
+        fetch('/api/' + id, {
             method: "GET",
             headers: {
                 'Authorization': bearer,
@@ -154,7 +154,7 @@
             let additionalInfo = document.getElementById("additional").value;
             const token = localStorage.getItem('token');
             const bearer = 'Bearer ' + token
-            fetch('http://localhost:3000/api/patient/' + id, {
+            fetch('/api/patient/' + id, {
                 method: "PATCH",
                 headers: {
                     'Authorization': bearer,

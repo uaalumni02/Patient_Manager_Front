@@ -63,7 +63,7 @@
   window.addEventListener("load", (req, res) => {
     const token = localStorage.getItem('token');
     const bearer = 'Bearer ' + token
-    fetch('http://localhost:3000/api/patient/', {
+    fetch('/api/patient/', {
       method: "GET",
       headers: {
         'Authorization': bearer,

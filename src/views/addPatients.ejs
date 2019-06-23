@@ -130,7 +130,7 @@
 			const token = localStorage.getItem('token');
 			const bearer = 'Bearer ' + token
 
-			fetch('http://localhost:3000/api/patient', {
+			fetch('/api/patient', {
 				method: "post",
 				headers: {
 					'Authorization': bearer,
@@ -148,7 +148,7 @@
 			})
 				.then(res => res.json())
 				.then(response => {
-					location.replace("http://localhost:8080/allpatients")
+					location.replace("/allpatients")
 				}).catch(error => console.error('Error:', error));
 		})
 	});
