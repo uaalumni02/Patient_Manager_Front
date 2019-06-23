@@ -83,7 +83,7 @@
             let username = document.getElementById("username").value;
             let password = document.getElementById("password").value;
             event.preventDefault();
-            fetch('api/user/login', {
+            fetch('api/user/', {
                 method: "post",
                 headers: {
                     'Content-Type': 'application/json',
