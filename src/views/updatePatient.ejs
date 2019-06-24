@@ -125,7 +125,6 @@
         })
             .then(res => res.json())
             .then(response => {
-                console.log(response)
                 const name = document.getElementById("name").value = `${response.name}`;
                 const email = document.getElementById("email").value = `${response.email}`;
                 const phone = document.getElementById("phone").value = `${response.phone}`;
