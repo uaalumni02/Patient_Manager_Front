@@ -84,7 +84,6 @@
             let password = document.getElementById("password").value;
             event.preventDefault();
             fetch('https://patient-manager1.herokuapp.com/api/user/login', {
-                mode: "no-cors",
                 method: "post",
                 headers: {
                     'Content-Type': 'application/json',
